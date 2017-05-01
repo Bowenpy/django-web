@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load custom_markdown %}
+{% block title %}
+Biubiubiu
+{% endblock %}
+{% block body %}
+		<div class="container">
+			<div class="col-md-9">
+				{% for article  in article_list  %}
+							<article class="article" >
+								<a  href="{% url 'detail' article.id %}" class="h2" style="color:#34495E"><strong>{{ article.title }}</strong></a>
+								<p><small><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><span style="color:#4f5050;"> {{ article.create_time|date:"Y-m-d H:i" }}</span></small>
+								</p>
+								<div class="post-alert">本博客采用创作共用版权协议, 要求署名、非商业用途和保持一致. 转载本博客文章必须也遵循署名-非商业用途-保持一致的创作共用协议</div>
+								<p>
+										{{ article.abstract|custom_markdown}}
+								</p>
+								<div style="border-top:1px solid #EBEBEB;padding:10px 5px;margin-top:20px;">
+									<p><a href="?tag={{ article.category }}"><span class="label label-default text-left"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> {{article.category}}</span>
+										<a href="{% url 'detail' article.id %}" style="float:right"><button class="btn btn-primary btn-wide text-right"><span class="glyphicon glyphicon-fire
+											glyphicon " ></span>  了解更多</button></a></p>
+								</div>
+							</article>
+				{% endfor %}
+						<nav>
+							<ul class="pagination pagination-lg">
+										{% if article_list.has_previous %}
+		                <li ><a href="?page={{ article_list.previous_page_number }}">&laquo;</a></li>
+				            {% else %}
+										<li  class="previous disabled"><a>&laquo;</a></li>
+				            {% endif %}
+				            {% for page_number in article_list.paginator.page_range %}
+				                {% ifequal page_number  article_list.number %}
+												<li ><a href="?page={{ page_number }}"style="background-color:#3399CC; color:white">
+														{{ page_number }}
+												</a></li>
+				                {% else %}
+												<li><a href="?page={{ page_number }}">
+														{{ page_number }}
+												</a></li>
+				                {% endifequal %}
+				            {% endfor %}
+				            {% if  article_list.has_next %}
+										<li><a href="?page={{ article_list.next_page_number }}">
+										&raquo;</a></li>
+				            {% else %}
+										<li  class="previous disabled"><a >
+										&raquo;</a></li>
+				            {% endif %}
+							</ul>
+				</nav>
+			</div>
+			<div class="col-md-3" id=profile>
+					<div class="category">
+						<h3 style="text-align:center;"><strong>Bowen</strong></h3>
+						<div class="list-group">
+							<div align="center">
+								<img src="http://img2.3lian.com/2014/c6/42/d/44.jpg" style="height:150px;width:150px;border-radius:130px;text-align:center" align="center">
+							</div>
+							<br>
+							<p style="text-align:center;">
+								<strong>不着调、瞎扯谈、乱翻书，码代码 QQ：200706003</strong>
+							</p>
+							<p style="text-align:center">
+								<a href="{% url 'about' %}"><button class="btn btn-danger btn-wide"><span class="glyphicon glyphicon-user"></span>  关于我</button></a>
+							</p>
+						</div>
+					</div>
+			</div>
+
+			<div class="col-md-3">
+					<div class="category">
+						<h3 style="text-align:center;">文章分类</h3>
+						<div class="list-group">
+							{% for tag in category_list %}
+									<a href="?tag={{ tag.name }}" class="list-group-item"><span class="badge">{{ tag.num_articles }}</span><strong>{{ tag.name }}</strong></a>
+							{% endfor %}
+						</div>
+					</div>
+			</div>
+	</div>
+	{% endblock %}

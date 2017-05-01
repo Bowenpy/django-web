@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}
+About Me
+{% endblock %}
+{% block body %}
+		<div class="container" id='post'>
+      <div class="row">
+    			<div class="col-md-12">
+            <article class="article the-font">
+			<div class="comtainer">
+				<div class="row">
+					<div class="col-md-4">
+						<br>
+						<div align="center"><img src="http://img2.3lian.com/2014/c6/42/d/44.jpg" style="height:250px;width:250px;border-radius:130px;text-align:center" align="center"></div>
+						<br>
+						<p class="lead text-center"><strong>刘善国</strong></p>
+						<br>
+
+					</div>
+					<div class="col-md-8" style="line-height:40px;">
+						<h2>个人信息：</h2>
+						<hr>
+						<ul>
+							<li>姓名 ：刘善国</li>
+							<li>网名 ：Bowen</li>
+							<li>年龄 ：20</li>
+							<li>生日 ：1996/12/18</li>
+							<li>居住地 ：重庆</li>
+						</ul>
+						<h2>联系方式：</h2>
+						<hr>
+						<ul>
+							<li>EMAIL:<a href="#"> qq200706003@gmail.com</a></li>
+							<li>WEIBO:<a href="http://weibo.com/3973294594/profile"> 刘善国_Bowen的微博_微博</a></li>
+							<li>QQ : 200706003</li>
+							<li>TEL : 17602540420</li>
+						</ul>
+						<h2>个人技能：</h2>
+						<hr>
+						<ul>
+							<li>Python,Django</li>
+							<li>了解Bootstrap ,SegmenticUI等前端布局</li>
+							<li>了解jQuery</li>
+							<li>了解Mysql数据库</li>
+              <li>本博客源码：<a href="https://github.com/Bowenpy/web">https://github.com/Bowenpy/web</a></li>
+						</ul>
+						<h2>兴趣爱好：</h2>
+						<hr>
+						<ul>
+							<li>码代码,喜欢新技术</li>
+							<li>看书，骑行</li>
+						</ul>
+					</div>
+					<hr>
+					<br>
+					<br>
+
+					</div>
+
+				</div>
+
+		</article>
+
+            <article class="article the-font">
+			<div class="ds-share flat" data-thread-key="{{ article.id }}" data-title="{{ article.title }}" data-images="http://www.youlanw.com/static/images/man.jpg" data-content="{{ article.content }}" data-url="article/{{ article.id }}">
+    <div class="ds-share-inline">
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+			<!-- 多说评论框 start -->
+<!-- 评论框 end -->
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+<!-- UY END -->
+		</article>
+    			</div>
+      </div>
+		</div>
+		{% endblock %}
